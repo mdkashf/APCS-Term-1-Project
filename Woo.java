@@ -3,10 +3,10 @@ public class Woo
     //Initialization of Game
     //GameMode: Player v. Computer or Player v. Player
     public static int[][] board = new int[5][5];
-    
-    
 
-
+    //Game Representation
+ 
+    
     //User inputs
 
 
