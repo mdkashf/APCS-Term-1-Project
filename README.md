@@ -1,8 +1,10 @@
 Cashcoders
+
     - Md Kashf Mashrafi
     - Daniel Jiang
 
 Description [needs expansion]
+
     A project aimed at recreating the board game know as Connect Four. 
     The game can be played through the commandline terminal.
     A player can challange another and take turns; attempting to gain victory.
@@ -11,7 +13,9 @@ Description [needs expansion]
     
 
 How to run the game
+
     - $ javac Woo.java
+    
     - $ java Woo
     
-    - From here follow the directions presented by the terminal screen. 
+From here follow the directions presented by the terminal screen. 
