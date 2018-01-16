@@ -4,7 +4,7 @@ public class Woo
 {
     //Initialization of Game
 
-   public  static boolean game = true;
+   public static boolean game = true;
     
     //GameMode: Player v. Computer or Player v. Player
     public static int[][] board = new int[5][5];
@@ -27,21 +27,16 @@ public class Woo
  
     
     //User inputs
-    public static void userUpdate ( int rows , int player)
+    public static void userUpdate ( int column , int player)
     {
 	//takes the column from user imput and updates the board according to the number of the player
 
-	rows --;
-	int colm = 0;
-
-	while ( board [colm][rows] == 0 && colm < 4 )
-	    {
-		   
-		colm++;
-		       
+	for(int x = 4; x >= 0; x--){
+	    if(board[x][column - 1] == 0){
+		board[x][column - 1] = player;
+		break;
 	    }
-	    
-	board [colm][rows] = player;
+	}
     }
 
 
