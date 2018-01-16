@@ -28,9 +28,12 @@ public class Woo
 
 		boardRep += "\n |";
 	    }
+	boardRep = boardRep.substring(0, boardRep.length() - 1);
+	boardRep += " 1 2 3 4 5 6 7 ";
 	return  boardRep.substring(0, boardRep.length() - 1);
     }
 
+    //checks for horizontal victory
     public static boolean horizontalWin(){
 	for(int x = 5; x > 0; x--){
 	    for(int y = 0; y < 3; y++){
@@ -46,7 +49,8 @@ public class Woo
 	}
 	return false;
     }
-	
+
+    //checks for vertical victory
     public static boolean verticalWin(){
 	for(int x = 5; x > 0; x--){
 	    for(int y = 0; y < 3; y++){
@@ -62,31 +66,38 @@ public class Woo
 	}
 	return false;
     }
-    /*
-    public static boolean diagonalRightWin(){
-	for(int x = 0; x < 2; x++){
-	    for(int y = 0; y < 6; y++){
-		if((board[x][y] == board[x + 1][y + 1]) && (board[x + 1][y + 1] == board[x + 2][y + 2]) && (board[x + 2][y + 2] == board[x + 3][y + 3])){
-		    return true;
+
+    //checks for diagonal victory via linear growth
+    public static boolean diagonalGrowthWin(){
+	for(int x = 5; x > 3; x--){
+	    for(int y = 0; y < 4; y++){
+		if(!(board[x][y] == 0)){
+		    if((board[x][y] == board[x - 1][y + 1]) && (board[x - 1][y + 1] == board[x - 2][y + 2]) && (board[x - 2][y + 2] == board[x - 3][y + 3])){
+			return true;
+		    }
 		}
 	    }
 	}
 	return false;
     }
 
-    public static boolean diagonalLeftWin(){
-	for(int x = 0; x < 2; x++){
-	    for(int y = 0; y < 6; y++){
-		if((board[x][y] == board[x][y + 1]) && (board[x][y + 1] == board[x][y + 2]) && (board[x][y + 2] == board[x][y + 3])){
+    //checks for diagonal victory via linear decay
+    public static boolean diagonalDecayWin(){
+	for(int x = 5; x > 3; x--){
+	    for(int y = 6; y > 2; y--){
+		if(!(board[x][y] == 0)){
+		    if((board[x][y] == board[x - 1][y - 1]) && (board[x - 1][y - 1] == board[x - 2][y - 2]) && (board[x - 2][y - 2] == board[x - 3][y - 3])){
 		    return true;
+		    }
 		}
 	    }
 	}
 	return false;
     }
-    */
+
+    //amalgamates all the winning conditions
     public static boolean winConditionMet(){
-	if(horizontalWin() || verticalWin()){
+	if(horizontalWin() || verticalWin() || diagonalGrowthWin() || diagonalDecayWin()){
 	    return true;
 		}
 	return false;
@@ -104,6 +115,7 @@ public class Woo
 		board[x][column - 1] = player;
 		turn += 1;
 		if(winConditionMet() && (board[x][column - 1] == player) && (turn > 3)){
+		    System.out.println(toString2());
 		    System.out.println("Player " + player + " wins!");
 		    System.exit(0);
 		}
