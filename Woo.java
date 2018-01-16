@@ -32,8 +32,8 @@ public class Woo
 	boardRep += " 1 2 3 4 5 6 7 ";
 	return  boardRep.substring(0, boardRep.length() - 1);
     }
-
-    //checks for horizontal victory
+        
+        //checks for horizontal victory
     public static boolean horizontalWin(){
 	for(int x = 5; x > 0; x--){
 	    for(int y = 0; y < 3; y++){
@@ -102,6 +102,9 @@ public class Woo
 		}
 	return false;
     }
+
+
+
     
     //User inputs
     public static void userUpdate(int column, int player){
@@ -133,23 +136,11 @@ public class Woo
     public static void main(String [] args)
     {
 	System.out.println(" Clean Baord");
-	System.out.println(toString2());
 
-	while (game == true)
-	    {
-		System.out.println("New Game");
-		System.out.println(toString2());
-		System.out.println("Turn: Player One \n Enter a column number:");
-		Scanner sc = new Scanner( System.in);
-		int input_1 = sc.nextInt();
-		userUpdate(input_1 , 1);
-		System.out.println(toString2());
-		System.out.println("Turn: Player Two \n Enter a column number:");
-		int input_2 = sc.nextInt();
-		userUpdate(input_2 , 2);
-		System.out.println(toString2());
+	PvP players = new PvP();
+	players();
 
-	    }
+	
     }
 }
 
