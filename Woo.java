@@ -131,12 +131,31 @@ public class Woo
 	    System.exit(0);
 	}
     }
+    //Prompt
+    public static int  invalids = 0;
 
     //main
     public static void main(String [] args)
     {
-	System.out.println(" Clean Baord");
+	if (invalids == 0)
+	    {
+	    System.out.println("~~~WELCOME TO CONNECT FOUR ~~~ \n Please Choose One of the Following Options \n \n");
+	    }
+	System.out.println("1) PvP - Two player mode \n2) PvE - Player varsus Computer mode");
+	Scanner sc = new Scanner( System.in);
+	int option = sc.nextInt();
+	if (option == 1)
+	    {	
 	PvP.main(null);
+	    }
+	else if (option == 2){
+	    System.out.println("WORK IN POGRESS");
+	} else
+	    {
+		System.out.println( "ENTER A VALID OPTION");
+		invalids++;
+		main(null);
+	    }
 
 	
     }
