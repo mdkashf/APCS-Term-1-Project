@@ -104,9 +104,6 @@ public class Woo
     public static void userUpdate(int column, int player){
 	//takes the column from user imput and updates the board according to the number of the player
 	
-	if (column > 7 || column < 0){
-	    column = 0;
-	}
         for(int x = 5; x >= 0; x--){
 	    if(board[x][column - 1] == 0){
 		board[x][column - 1] = player;
