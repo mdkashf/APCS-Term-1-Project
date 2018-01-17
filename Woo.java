@@ -34,13 +34,10 @@ public class Woo
     }
         
         //checks for horizontal victory
-    public static boolean horizontalWin(){
+    public static boolean horizontalWin(int player){
 	for(int x = 5; x > 0; x--){
-	    for(int y = 0; y < 3; y++){
-		if(board[x][y] == 0){
-		    return false;
-		}
-		else{
+	    for(int y = 0; y < 4; y++){
+		if(board[x][y] == player){
 		    if((board[x][y] == board[x][y + 1]) && (board[x][y + 1] == board[x][y + 2]) && (board[x][y + 2] == board[x][y + 3])){
 			return true;
 		    }
@@ -51,13 +48,10 @@ public class Woo
     }
 
     //checks for vertical victory
-    public static boolean verticalWin(){
-	for(int x = 5; x > 0; x--){
-	    for(int y = 0; y < 3; y++){
-		if(board[x][y] == 0){
-		    return false;
-		}
-		else{
+    public static boolean verticalWin(int player){
+	for(int x = 5; x > 3; x--){
+	    for(int y = 0; y < 7; y++){
+		if(board[x][y] == player){
 		    if((board[x][y] == board[x - 1][y]) && (board[x - 1][y] == board[x - 2][y]) && (board[x - 2][y] == board[x - 3][y])){
 			return true;
 		    }
@@ -68,7 +62,7 @@ public class Woo
     }
 
     //checks for diagonal victory via linear growth
-    public static boolean diagonalGrowthWin(){
+    public static boolean diagonalGrowthWin(int player){
 	for(int x = 5; x > 3; x--){
 	    for(int y = 0; y < 4; y++){
 		if(!(board[x][y] == 0)){
@@ -82,7 +76,7 @@ public class Woo
     }
 
     //checks for diagonal victory via linear decay
-    public static boolean diagonalDecayWin(){
+    public static boolean diagonalDecayWin(int player){
 	for(int x = 5; x > 3; x--){
 	    for(int y = 6; y > 2; y--){
 		if(!(board[x][y] == 0)){
@@ -96,8 +90,8 @@ public class Woo
     }
 
     //amalgamates all the winning conditions
-    public static boolean winConditionMet(){
-	if(horizontalWin() || verticalWin() || diagonalGrowthWin() || diagonalDecayWin()){
+    public static boolean winConditionMet(int player){
+	if(horizontalWin(player) || verticalWin(player) || diagonalGrowthWin(player) || diagonalDecayWin(player)){
 	    return true;
 		}
 	return false;
@@ -109,7 +103,7 @@ public class Woo
     //User inputs
     public static void userUpdate(int column, int player){
 	//takes the column from user imput and updates the board according to the number of the player
-
+	
 	if (column > 7 || column < 0){
 	    column = 0;
 	}
@@ -117,7 +111,7 @@ public class Woo
 	    if(board[x][column - 1] == 0){
 		board[x][column - 1] = player;
 		turn += 1;
-		if(winConditionMet() && (board[x][column - 1] == player) && (turn > 3)){
+		if(winConditionMet(player) && (board[x][column - 1] == player) && (turn > 3)){
 		    System.out.println(toString2());
 		    System.out.println("Player " + player + " wins!");
 		    System.exit(0);
@@ -133,33 +127,6 @@ public class Woo
     }
     //Prompt
     public static int  invalids = 0;
-
-    //for AI mode
-    public static void userUpdate(int column, int player, String name){
-	//takes the column from user imput and updates the board according to the number of the player
-
-	if (column > 7 || column < 0){
-	    column = 0;
-	}
-        for(int x = 5; x >= 0; x--){
-	    if(board[x][column - 1] == 0){
-		board[x][column - 1] = player;
-		turn += 1;
-		if(winConditionMet() && (board[x][column - 1] == player) && (turn > 3)){
-		    System.out.println(toString2());
-		    System.out.println("Player " + name + " wins!");
-		    System.exit(0);
-		}
-		break;
-	    }
-	}
-	//ends the game in a draw if the board is filled and there is no victor
-	if(turn == 42){
-	    System.out.println("The game is a tie. Better luck next time!");
-	    System.exit(0);
-	}
-    }
-
 
     //main
     public static void main(String [] args)
@@ -177,12 +144,6 @@ public class Woo
 	    }
 	else if (option == 2){
 	    System.out.println("WORK IN POGRESS");
-	    System.out.println("Please Choose Your Opponent \n 1) AI_Intermediate \n 2) AI_Master");
-	    Scanner ai = new Scanner( System.in);
-	    int ai_option = ai.nextInt();
-	    PvE.set_ai(ai_option);
-	    PvE.main(null);
-	      
 	} else
 	    {
 		System.out.println( "ENTER A VALID OPTION");
@@ -193,4 +154,6 @@ public class Woo
 	
     }
 }
+
+
 
