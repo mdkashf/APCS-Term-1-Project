@@ -132,11 +132,63 @@ public class Woo
 	}
     }
 
+    //for AI mode
+    public static void userUpdate(int column, int player, String name){
+	//takes the column from user imput and updates the board according to the number of the player
+
+	if (column > 7 || column < 0){
+	    column = 0;
+	}
+        for(int x = 5; x >= 0; x--){
+	    if(board[x][column - 1] == 0){
+		board[x][column - 1] = player;
+		turn += 1;
+		if(winConditionMet() && (board[x][column - 1] == player) && (turn > 3)){
+		    System.out.println(toString2());
+		    System.out.println("Player " + name + " wins!");
+		    System.exit(0);
+		}
+		break;
+	    }
+	}
+	//ends the game in a draw if the board is filled and there is no victor
+	if(turn == 42){
+	    System.out.println("The game is a tie. Better luck next time!");
+	    System.exit(0);
+	}
+    }
+    //Prompt
+    public static int  invalids = 0;
+
     //main
     public static void main(String [] args)
     {
-	System.out.println(" Clean Baord");
+	if (invalids == 0)
+	    {
+	    System.out.println("~~~WELCOME TO CONNECT FOUR ~~~ \n Please Choose One of the Following Options \n \n");
+	    }
+	System.out.println("1) PvP - Two player mode \n2) PvE - Player varsus Computer mode");
+	Scanner sc = new Scanner( System.in);
+	int option = sc.nextInt();
+	if (option == 1)
+	    {	
 	PvP.main(null);
+	    }
+	else if (option == 2){
+	    System.out.println("WORK IN POGRESS");
+	    System.out.println("Please Choose Your Opponent \n 1) AI_Intermediate \n 2) AI_Master");
+	    Scanner ai = new Scanner( System.in);
+	    int ai_option = ai.nextInt();
+	    PvE.set_ai(ai_option);
+	    PvE.main(null);
+	      
+	    
+	} else
+	    {
+		System.out.println( "ENTER A VALID OPTION");
+		invalids++;
+		main(null);
+	    }
 
 	
     }
