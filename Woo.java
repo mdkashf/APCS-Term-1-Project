@@ -131,6 +131,8 @@ public class Woo
 	    System.exit(0);
 	}
     }
+    //Prompt
+    public static int  invalids = 0;
 
     //for AI mode
     public static void userUpdate(int column, int player, String name){
@@ -157,8 +159,7 @@ public class Woo
 	    System.exit(0);
 	}
     }
-    //Prompt
-    public static int  invalids = 0;
+
 
     //main
     public static void main(String [] args)
@@ -182,7 +183,6 @@ public class Woo
 	    PvE.set_ai(ai_option);
 	    PvE.main(null);
 	      
-	    
 	} else
 	    {
 		System.out.println( "ENTER A VALID OPTION");

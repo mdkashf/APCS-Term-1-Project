@@ -3,13 +3,16 @@ Cashcoders
     - Md Kashf Mashrafi
     - Daniel Jiang
 
-Description [needs expansion]
+Description
 
-    A project aimed at recreating the board game know as Connect Four. 
-    The game can be played through the commandline terminal.
-    A player can challange another and take turns; attempting to gain victory.
-    The game also has player vs computer where the player will compete against
-    an AI with either "intermediate" or "master" difficuilty. 
+    This project is a recreation the board game Connect Four and will be played via the commandline terminal.
+    It will feature two game modes, PvP and PvE. The player will make the selection once they run the program.
+    Once the game starts, each player will take turns dropping their token into columns 1-7.
+    If a player achieves four consecutive tokens in any position, up, down, left, right, diagonal, they win
+    the game.
+    If the board is filled before someone wins, the game will end in a draw.
+    In the event that someone tries to add their token to an already full column, their turn will be skipped.
+    
     
 
 How to run the game
