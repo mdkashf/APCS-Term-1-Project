@@ -4,14 +4,14 @@ public class Woo
 {
     //Initialization of Game
 
-    private static boolean game = true;
-    private static int turn;
+    public static boolean game = true;
+    public static int turn;
     
     //GameMode: Player v. Computer or Player v. Player
-    private static int[][] board = new int[6][7];
+    public static int[][] board = new int[6][7];
 
     //Defualt Constructors
-    private Woo(){
+    public Woo(){
 	turn = 0;
     }
     
@@ -136,9 +136,7 @@ public class Woo
     public static void main(String [] args)
     {
 	System.out.println(" Clean Baord");
-
-	PvP players = new PvP();
-	players();
+	PvP.main(null);
 
 	
     }
