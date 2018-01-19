@@ -160,7 +160,20 @@ public class Woo
 	PvP.main(null);
 	    }
 	else if (option == 2){
-	    System.out.println("WORK IN POGRESS");
+	    System.out.println("Please Choose A difficulty level:");
+	    System.out.println("1 ) Intermediate \n2 ) Master");
+	    Scanner sc3 = new Scanner( System.in);
+	    int diffOption = sc3.nextInt();
+	    if (diffOption == 1 || diffOption == 2)
+		{
+		    PvE.set_ai(diffOption);
+		    PvE.main(null);
+		    
+	    } else
+		{
+		    System.out.println("Error: Invalid Input. Program Restarted");
+		    main(null);
+		}
 	} else
 	    {
 		System.out.println( "ENTER A VALID OPTION");

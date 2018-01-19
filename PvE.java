@@ -13,7 +13,7 @@ public class PvE extends Woo
 	    } else
 	    {
 		System.out.println("Please Enter a Valid number");
-		main(null);
+		Woo.main(null);
 	}
     }
     public static void main (String [] args)
@@ -21,13 +21,18 @@ public class PvE extends Woo
         int turn = 0;
 	while (game == true)
 	    {
-		System.out.println("Turn " + turn);
 		System.out.println(toString2());
 		System.out.println("Your Turn \n Enter a column number:");
+		
 		Scanner sc = new Scanner( System.in);
 		int input_1 = sc.nextInt();
-		userUpdate(input_1 , 1);
-		System.out.println(toString2());
+		if (input_1 < 8 && input_1 > 0)
+		    {
+			userUpdate(input_1 , 1);
+		    } else {
+		    System.out.println("Invalid Input");
+		    main(null);
+		}
 		System.out.println("The AI Has Made It's move!");
 		int input_2;
 		if (ai == 1)
@@ -37,8 +42,8 @@ public class PvE extends Woo
 		    input_2 = AI_Master.move();
 		}
 		
-		userUpdate(input_2 , 2, "AI");
-		System.out.println(toString2());
+		userUpdate(input_2 , 2);
+	
 		turn++;
 
 	    }
