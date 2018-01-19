@@ -150,7 +150,7 @@ public class Woo
     {
 	if (invalids == 0)
 	    {
-	    System.out.println("~~~WELCOME TO CONNECT FOUR ~~~ \n Please Choose One of the Following Options \n \n");
+	    System.out.println("\n      ~~~WELCOME TO CONNECT FOUR ~~~ \nPlease Choose One of the Following Options \n");
 	    }
 	System.out.println("1) PvP - Two player mode \n2) PvE - Player varsus Computer mode");
 	Scanner sc = new Scanner( System.in);
